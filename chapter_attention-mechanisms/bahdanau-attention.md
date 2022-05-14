@@ -65,7 +65,7 @@ import tensorflow as tf
 
 ## 定义注意力解码器
 
-下面我们看看如何定义Bahdanau注意力，实现循环神经网络编码器-解码器？
+下面我们看看如何定义Bahdanau注意力，实现循环神经网络编码器-解码器。
 其实，我们只需重新定义解码器即可。
 为了更方便地显示学习的注意力权重，
 以下`AttentionDecoder`类定义了[**带有注意力机制解码器的基本接口**]。
@@ -216,9 +216,8 @@ class Seq2SeqAttentionDecoder(AttentionDecoder):
         return (outputs, hidden_state, enc_valid_lens)
 
     def call(self, X, state, **kwargs):
-        # enc_outputs的形状为(batch_size,num_steps,num_hiddens).
-        # hidden_state[0]的形状为(num_layers,batch_size,
-        # num_hiddens)
+        # enc_outputs的形状为(batch_size,num_steps,num_hiddens)
+        # hidden_state[0]的形状为(num_layers,batch_size, num_hiddens)
         enc_outputs, hidden_state, enc_valid_lens = state
         # 输出X的形状为(num_steps,batch_size,embed_size)
         X = self.embedding(X) # 输入X的形状为(batch_size,num_steps)
@@ -236,8 +235,7 @@ class Seq2SeqAttentionDecoder(AttentionDecoder):
             hidden_state = out[1:]
             outputs.append(out[0])
             self._attention_weights.append(self.attention.attention_weights)
-        # 全连接层变换后，outputs的形状为
-        # (num_steps,batch_size,vocab_size)
+        # 全连接层变换后，outputs的形状为(num_steps,batch_size,vocab_size)
         outputs = self.dense(tf.concat(outputs, axis=1))
         return outputs, [enc_outputs, hidden_state, enc_valid_lens]
 

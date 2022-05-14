@@ -47,7 +47,7 @@ conda activate d2l
 
 ## 安装深度学习框架和`d2l`软件包
 
-在安装深度学习框架之前，请先检查你的计算机上是否有可用的GPU（为笔记本电脑上显示器提供输出的GPU不算）。
+在安装深度学习框架之前，请先检查你的计算机上是否有可用的GPU。
 例如，你可以查看计算机是否装有NVIDIA GPU并已安装[CUDA](https://developer.nvidia.com/cuda-downloads)。
 如果你的机器没有任何GPU，没有必要担心，因为你的CPU在前几章完全够用。
 但是，如果你想流畅地学习全部章节，请提早获取GPU并且安装深度学习框架的GPU版本。
@@ -88,8 +88,8 @@ pip install mxnet==1.7.0.post1
 你可以按如下方式安装PyTorch的CPU或GPU版本：
 
 ```bash
-pip install torch==1.8.1
-pip install torchvision==0.9.1
+pip install torch==1.11.0
+pip install torchvision==0.12.0
 ```
 
 
@@ -99,8 +99,8 @@ pip install torchvision==0.9.1
 你可以按如下方式安装TensorFlow的CPU或GPU版本：
 
 ```bash
-pip install tensorflow==2.3.1
-pip install tensorflow-probability==0.11.1
+pip install tensorflow==2.8.0
+pip install tensorflow-probability==0.16.0
 ```
 
 
@@ -109,7 +109,7 @@ pip install tensorflow-probability==0.11.1
 我们的下一步是安装`d2l`包，以方便调取本书中经常使用的函数和类：
 
 ```bash
-pip install d2l==0.17.1
+pip install d2l==0.17.5
 ```
 
 
@@ -165,7 +165,7 @@ cd tensorflow
 :end_tab:
 
 
-安装完成后，你可以通过运行以下命令打开Jupyter笔记本：
+安装完成后，你可以通过运行以下命令打开Jupyter笔记本（在Window系统的命令行窗口中运行以下命令前，需先将当前路径定位到刚下载的本书代码解压后的目录）：
 
 ```bash
 jupyter notebook

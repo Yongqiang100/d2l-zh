@@ -2,7 +2,7 @@
 :label:`sec_self-attention-and-positional-encoding`
 
 在深度学习中，我们经常使用卷积神经网络（CNN）或循环神经网络（RNN）对序列进行编码。
-想象一下，有了注意力机制之后，我们将词元序列输入注意力池化中，
+想象一下，有了注意力机制之后，我们将词元序列输入注意力汇聚中，
 以便同一组词元同时充当查询、键和值。
 具体来说，每个查询都会关注所有的键－值对并生成一个注意力输出。
 由于查询、键和值来自同一组输入，因此被称为
@@ -43,7 +43,7 @@ $\mathbf{y}_1, \ldots, \mathbf{y}_n$，其中：
 
 $$\mathbf{y}_i = f(\mathbf{x}_i, (\mathbf{x}_1, \mathbf{x}_1), \ldots, (\mathbf{x}_n, \mathbf{x}_n)) \in \mathbb{R}^d$$
 
-根据 :eqref:`eq_attn-pooling`中定义的注意力池化函数$f$。
+根据 :eqref:`eq_attn-pooling`中定义的注意力汇聚函数$f$。
 下面的代码片段是基于多头注意力对一个张量完成自注意力的计算，
 张量的形状为（批量大小，时间步的数目或词元序列的长度，$d$）。
 输出与输入的张量形状相同。
@@ -136,7 +136,7 @@ $d \times d$权重矩阵和$d$维隐状态的乘法计算复杂度为$\mathcal{O
 包含一个序列中$n$个词元的$d$维嵌入表示。
 位置编码使用相同形状的位置嵌入矩阵
 $\mathbf{P} \in \mathbb{R}^{n \times d}$输出$\mathbf{X} + \mathbf{P}$，
-矩阵第$i$行、第$2j$列和$2j$列上的元素为：
+矩阵第$i$行、第$2j$列和$2j+1$列上的元素为：
 
 $$\begin{aligned} p_{i, 2j} &= \sin\left(\frac{i}{10000^{2j/d}}\right),\\p_{i, 2j+1} &= \cos\left(\frac{i}{10000^{2j/d}}\right).\end{aligned}$$
 :eqlabel:`eq_positional-encoding-def`
